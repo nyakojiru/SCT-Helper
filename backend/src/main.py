@@ -14,15 +14,15 @@ load_dotenv()
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    title="SCT Tracker API",
-    description="API for SCT Tracker application",
+    title="SCT Helper API",
+    description="API for SCT Helper application",
     version="1.0.0"
 )
 
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=settings.cors_origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -43,5 +43,5 @@ app.include_router(stats.router, prefix="/api/stats", tags=["stats"])
 
 @app.get("/")
 async def root():
-    return {"message": "SCT Tracker API", "version": "1.0.0"}
+    return {"message": "SCT Helper API", "version": "1.0.0"}
 

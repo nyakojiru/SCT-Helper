@@ -1,7 +1,7 @@
 {
   "name": "sct-scheduler",
   "version": "1.0.0",
-  "description": "Scheduler service for SCT Tracker reminders",
+  "description": "Scheduler service for SCT Helper reminders",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js"

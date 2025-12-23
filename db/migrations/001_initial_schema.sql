@@ -1,4 +1,4 @@
--- Initial database schema for SCT Tracker
+-- Initial database schema for SCT Helper
 -- This file is for reference. Actual migrations are handled by Alembic in the backend.
 
 -- Users table

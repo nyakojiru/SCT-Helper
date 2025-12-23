@@ -17,6 +17,14 @@
   margin: 0;
 }
 
+.app-subtitle {
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  margin: 0.25rem 0 0 0;
+  opacity: 0.8;
+}
+
 .period-select {
   padding: 0.75rem 1rem;
   background: rgba(10, 10, 15, 0.5);

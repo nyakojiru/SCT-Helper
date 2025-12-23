@@ -1,4 +1,4 @@
-# SCT Tracker + Reminder + Guide App
+# SCT Helper + Reminder + Guide App
 
 A comprehensive self-hosted application for tracking Cognitive Disengagement Syndrome (SCT) / Sluggish Cognitive Tempo symptoms, with reminders, interactive guides, and progress analytics.
 

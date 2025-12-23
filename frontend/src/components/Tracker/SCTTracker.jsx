@@ -85,7 +85,20 @@ const SCTTracker = () => {
   }
 
   const updateField = (field, value) => {
-    setEntry(prev => ({ ...prev, [field]: value }))
+    setEntry(prev => {
+      if (!prev) {
+        // Initialize entry if it doesn't exist
+        return {
+          date: today,
+          mentalEnergy: 5,
+          fogEpisodes: 0,
+          sleepHours: 7,
+          notes: '',
+          [field]: value
+        }
+      }
+      return { ...prev, [field]: value }
+    })
   }
 
   const updateHabit = async (habitKey, value) => {
@@ -154,11 +167,11 @@ const SCTTracker = () => {
               type="range"
               min="1"
               max="10"
-              value={entry.mentalEnergy}
+              value={entry.mentalEnergy ?? 5}
               onChange={(e) => updateField('mentalEnergy', parseInt(e.target.value))}
               className="slider"
             />
-            <span className="metric-value">{entry.mentalEnergy}</span>
+            <span className="metric-value">{entry.mentalEnergy ?? 5}</span>
           </div>
 
           <div className="metric-card">
@@ -166,7 +179,7 @@ const SCTTracker = () => {
             <input
               type="number"
               min="0"
-              value={entry.fogEpisodes}
+              value={entry.fogEpisodes ?? 0}
               onChange={(e) => updateField('fogEpisodes', parseInt(e.target.value) || 0)}
               className="number-input"
             />
@@ -179,7 +192,7 @@ const SCTTracker = () => {
               min="0"
               max="24"
               step="0.5"
-              value={entry.sleepHours}
+              value={entry.sleepHours ?? 7}
               onChange={(e) => updateField('sleepHours', parseFloat(e.target.value) || 0)}
               className="number-input"
             />
@@ -254,7 +267,7 @@ const SCTTracker = () => {
       <div className="tracker-section">
         <h3>Notas</h3>
         <textarea
-          value={entry.notes}
+          value={entry.notes ?? ''}
           onChange={(e) => updateField('notes', e.target.value)}
           className="notes-textarea"
           placeholder="Añade notas sobre tu día..."

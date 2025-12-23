@@ -12,6 +12,6 @@ class StatsSummary(BaseModel):
 
 class CorrelationData(BaseModel):
     sleep_vs_energy: List[Dict[str, float]]
-    exercise_vs_fog: List[Dict[str, float]]
+    exercise_vs_fog: List[Dict[str, float]]  # date is converted to ordinal (number of days)
     correlations: Dict[str, float]
 

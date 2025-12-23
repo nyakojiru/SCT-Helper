@@ -18,7 +18,8 @@ const Layout = ({ children }) => {
     <div className="layout">
       <nav className="navbar">
         <div className="navbar-brand">
-          <h1>SCT Tracker</h1>
+          <h1>SCT Helper</h1>
+          <p className="app-subtitle">Cognitive Disengagement Syndrome</p>
         </div>
         <div className="navbar-nav">
           {navItems.map((item) => (

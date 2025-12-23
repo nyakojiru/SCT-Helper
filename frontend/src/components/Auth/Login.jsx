@@ -28,7 +28,8 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>SCT Tracker</h1>
+        <h1>SCT Helper</h1>
+        <p className="app-subtitle">Cognitive Disengagement Syndrome</p>
         <h2>Login</h2>
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>

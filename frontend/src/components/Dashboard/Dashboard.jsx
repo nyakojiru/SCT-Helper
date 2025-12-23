@@ -39,7 +39,10 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container fade-in">
       <div className="dashboard-header">
-        <h2>Dashboard</h2>
+        <div>
+          <h2>SCT Helper</h2>
+          <p className="app-subtitle">Cognitive Disengagement Syndrome</p>
+        </div>
         <select
           value={period}
           onChange={(e) => setPeriod(e.target.value)}

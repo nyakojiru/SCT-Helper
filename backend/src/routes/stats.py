@@ -82,13 +82,14 @@ async def get_correlations(
     
     # Build correlation data
     sleep_vs_energy = [
-        {"sleep": e.sleep_hours, "energy": e.mental_energy}
+        {"sleep": float(e.sleep_hours), "energy": float(e.mental_energy)}
         for e in entries
     ]
     
     # Exercise vs fog (simplified - would need to join with habit_logs)
+    # Convert date to timestamp (days since epoch) for numeric compatibility
     exercise_vs_fog = [
-        {"fog": e.fog_episodes, "date": e.date.isoformat()}
+        {"fog": float(e.fog_episodes), "date": float(e.date.toordinal())}
         for e in entries
     ]
     
