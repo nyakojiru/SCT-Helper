@@ -1,0 +1,260 @@
+.reminders-container {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.reminders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.reminders-header h2 {
+  color: var(--accent-primary);
+  font-family: 'Courier New', monospace;
+  margin: 0;
+}
+
+.add-reminder-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  border: none;
+  border-radius: 4px;
+  color: var(--bg-primary);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-reminder-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.reminder-form {
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.reminder-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.reminder-form label {
+  display: block;
+  color: var(--accent-secondary);
+  margin-bottom: 0.5rem;
+  font-family: 'Courier New', monospace;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(10, 10, 15, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+}
+
+.days-selector {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.day-btn {
+  padding: 0.5rem 1rem;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.day-btn.active {
+  background: rgba(99, 102, 241, 0.4);
+  border-color: var(--accent-primary);
+  color: var(--accent-tertiary);
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.submit-btn, .cancel-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  border: none;
+  color: var(--bg-primary);
+}
+
+.cancel-btn {
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--border-color);
+  color: var(--accent-secondary);
+}
+
+.reminder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reminder-item {
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.reminder-info {
+  flex: 1;
+}
+
+.reminder-info h4 {
+  color: var(--accent-primary);
+  font-family: 'Courier New', monospace;
+  margin: 0 0 0.5rem 0;
+}
+
+.reminder-time {
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.reminder-days {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.day-badge {
+  padding: 0.25rem 0.75rem;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+}
+
+.day-badge.active {
+  background: rgba(99, 102, 241, 0.4);
+  border-color: var(--accent-primary);
+  color: var(--accent-tertiary);
+}
+
+.reminder-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(99, 102, 241, 0.2);
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--bg-primary);
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--accent-primary);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+.edit-btn {
+  padding: 0.5rem 1rem;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--border-color);
+  color: var(--accent-secondary);
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+.no-reminders {
+  text-align: center;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  padding: 3rem;
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .reminder-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reminder-actions {
+    justify-content: space-between;
+  }
+}
+

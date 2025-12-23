@@ -1,0 +1,470 @@
+.guide-component {
+  animation: fadeIn 0.3s ease-in;
+  padding: 2rem;
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.guide-component h3 {
+  color: var(--accent-primary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 1rem;
+}
+
+.guide-description {
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2rem;
+}
+
+.timer-display {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.timer-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid var(--accent-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.timer-value {
+  font-size: 3rem;
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.timer-value-large {
+  font-size: 2.5rem;
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.timer-label {
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.score-display {
+  text-align: center;
+  margin: 1rem 0;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+}
+
+.start-btn, .stop-btn, .pause-btn, .reset-btn, .add-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  border: none;
+  border-radius: 4px;
+  color: var(--bg-primary);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+}
+
+.start-btn:hover, .stop-btn:hover, .add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.pause-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+}
+
+.reset-btn {
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--border-color);
+  color: var(--accent-secondary);
+}
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.word-input {
+  flex: 1;
+  padding: 0.75rem;
+  background: rgba(10, 10, 15, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+}
+
+.words-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  min-height: 100px;
+  padding: 1rem;
+  background: rgba(10, 10, 15, 0.3);
+  border-radius: 4px;
+}
+
+.word-tag {
+  padding: 0.5rem 1rem;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+}
+
+.pomodoro-display {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.pomodoro-stats {
+  text-align: center;
+  margin: 1rem 0;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+}
+
+.pomodoro-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.timer-circle.work {
+  border-color: var(--accent-primary);
+}
+
+.timer-circle.break {
+  border-color: #10b981;
+}
+
+.focus-canvas {
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: rgba(10, 10, 15, 0.5);
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+}
+
+.instruction {
+  text-align: center;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  margin: 1rem 0;
+}
+
+.meditation-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+}
+
+.meditation-mode-selector {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.meditation-mode-selector button {
+  padding: 0.75rem 1.5rem;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--border-color);
+  color: var(--accent-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  transition: all 0.3s ease;
+}
+
+.meditation-mode-selector button.active {
+  background: rgba(99, 102, 241, 0.4);
+  border-color: var(--accent-primary);
+}
+
+.breathing-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+  transition: all 4s ease;
+}
+
+.breathing-circle.inhale {
+  transform: scale(1.2);
+  background: rgba(99, 102, 241, 0.3);
+}
+
+.breathing-circle.hold {
+  transform: scale(1.2);
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.breathing-circle.exhale {
+  transform: scale(1);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.breath-count {
+  font-size: 3rem;
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.breath-instruction {
+  text-align: center;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.routine-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.routine-step {
+  padding: 1.5rem;
+  background: rgba(10, 10, 15, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.routine-step.active {
+  border-color: var(--accent-primary);
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.routine-step.completed {
+  opacity: 0.6;
+  border-color: #10b981;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.step-icon {
+  font-size: 2rem;
+}
+
+.step-info {
+  flex: 1;
+}
+
+.step-info h4 {
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  margin: 0 0 0.25rem 0;
+}
+
+.step-duration {
+  color: var(--accent-tertiary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.step-checkbox {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  accent-color: var(--accent-primary);
+}
+
+.routine-progress {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(10, 10, 15, 0.3);
+  border-radius: 4px;
+}
+
+.routine-progress p {
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+  transition: width 0.3s ease;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.game-card {
+  padding: 2rem;
+  background: rgba(10, 10, 15, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.game-card:hover {
+  background: rgba(10, 10, 15, 0.5);
+  border-color: var(--accent-secondary);
+}
+
+.wordle-game, .anagram-game {
+  margin-top: 2rem;
+}
+
+.wordle-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.wordle-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.wordle-cell {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-tertiary);
+}
+
+.wordle-cell.green {
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.wordle-cell.yellow {
+  background: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.wordle-cell.gray {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.wordle-input {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.game-result {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 4px;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.anagram-display {
+  text-align: center;
+}
+
+.shuffled-letters {
+  font-size: 2rem;
+  font-family: 'Courier New', monospace;
+  color: var(--accent-tertiary);
+  letter-spacing: 0.5rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: rgba(10, 10, 15, 0.3);
+  border-radius: 4px;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+}
+
+.meditation-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .timer-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .timer-value {
+    font-size: 2rem;
+  }
+
+  .focus-canvas {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .breathing-circle {
+    width: 150px;
+    height: 150px;
+  }
+}
+

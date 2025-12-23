@@ -1,0 +1,58 @@
+.settings-container {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.settings-container h2 {
+  color: var(--accent-primary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 2rem;
+}
+
+.settings-section {
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.settings-section h3 {
+  color: var(--accent-primary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 1rem;
+}
+
+.settings-description {
+  color: var(--accent-secondary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 1.5rem;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.export-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  border: none;
+  border-radius: 4px;
+  color: var(--bg-primary);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.export-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.export-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

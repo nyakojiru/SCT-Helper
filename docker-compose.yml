@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: sct-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sct_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sct_password}
+      POSTGRES_DB: ${POSTGRES_DB:-sct_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sct_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sct-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sct-backend
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-sct_user}:${POSTGRES_PASSWORD:-sct_password}@db:5432/${POSTGRES_DB:-sct_db}
+      JWT_SECRET: ${JWT_SECRET:-your-secret-key-change-in-production}
+      JWT_ALGORITHM: HS256
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+      ENVIRONMENT: development
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - /app/__pycache__
+    depends_on:
+      db:
+        condition: service_healthy
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - sct-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: sct-frontend
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    command: npm run dev -- --host 0.0.0.0
+    networks:
+      - sct-network
+
+  scheduler:
+    build:
+      context: ./scheduler
+      dockerfile: Dockerfile
+    container_name: sct-scheduler
+    environment:
+      BACKEND_URL: ${BACKEND_URL:-http://backend:8000}
+      NODE_ENV: development
+    volumes:
+      - ./scheduler:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - sct-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  sct-network:
+    driver: bridge
+
