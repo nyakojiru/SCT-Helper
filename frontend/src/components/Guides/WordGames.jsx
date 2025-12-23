@@ -6,14 +6,14 @@ const WordGames = () => {
 
   const games = [
     { id: 'wordle', name: 'Wordle', component: WordleGame },
-    { id: 'anagram', name: 'Anagramas', component: AnagramGame },
+    { id: 'anagram', name: 'Anagrams', component: AnagramGame },
   ]
 
   const ActiveComponent = games.find(g => g.id === activeGame)?.component
 
   return (
     <div className="guide-component">
-      <h3>Juegos de Palabras</h3>
+      <h3>Word Games</h3>
       {!activeGame ? (
         <div className="games-grid">
           {games.map((game) => (
@@ -29,7 +29,7 @@ const WordGames = () => {
       ) : (
         <div>
           <button onClick={() => setActiveGame(null)} className="back-btn">
-            ← Volver
+            ← Back
           </button>
           {ActiveComponent && <ActiveComponent />}
         </div>
@@ -92,13 +92,13 @@ function WordleGame() {
             className="word-input"
           />
           <button onClick={handleGuess} className="add-btn">
-            Adivinar
+            Guess
           </button>
         </div>
       )}
       {gameOver && (
         <div className="game-result">
-          {guesses[guesses.length - 1] === targetWord ? '¡Ganaste!' : `La palabra era: ${targetWord}`}
+          {guesses[guesses.length - 1] === targetWord ? 'You won!' : `The word was: ${targetWord}`}
         </div>
       )}
     </div>
@@ -128,23 +128,23 @@ function AnagramGame() {
 
   return (
     <div className="anagram-game">
-      <h4>Anagramas</h4>
+      <h4>Anagrams</h4>
       <div className="anagram-display">
         <div className="shuffled-letters">{shuffled}</div>
-        <p>Reordena las letras para formar una palabra</p>
+        <p>Rearrange the letters to form a word</p>
         <input
           type="text"
           value={userWord}
           onChange={(e) => setUserWord(e.target.value.toUpperCase())}
           className="word-input"
-          placeholder="Tu respuesta..."
+          placeholder="Your answer..."
         />
         <button onClick={checkWord} className="add-btn">
-          Verificar
+          Check
         </button>
         <div className="game-stats">
-          <span>Puntuación: <strong>{score}</strong></span>
-          <span>Tiempo: <strong>{timeLeft}s</strong></span>
+          <span>Score: <strong>{score}</strong></span>
+          <span>Time: <strong>{timeLeft}s</strong></span>
         </div>
       </div>
     </div>

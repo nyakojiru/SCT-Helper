@@ -43,7 +43,7 @@ const TrendCharts = ({ period }) => {
 
   return (
     <div className="trend-charts">
-      <h3>Tendencias</h3>
+      <h3>Trends</h3>
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
@@ -63,21 +63,21 @@ const TrendCharts = ({ period }) => {
               dataKey="mentalEnergy"
               stroke="#6366f1"
               strokeWidth={2}
-              name="Energía Mental"
+              name="Mental Energy"
             />
             <Line
               type="monotone"
               dataKey="fogEpisodes"
               stroke="#f59e0b"
               strokeWidth={2}
-              name="Episodios de Niebla"
+              name="Fog Episodes"
             />
             <Line
               type="monotone"
               dataKey="sleepHours"
               stroke="#10b981"
               strokeWidth={2}
-              name="Horas de Sueño"
+              name="Sleep Hours"
             />
           </LineChart>
         </ResponsiveContainer>

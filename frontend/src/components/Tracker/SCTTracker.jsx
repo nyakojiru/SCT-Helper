@@ -6,6 +6,7 @@ import './SCTTracker.css'
 const SCTTracker = () => {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [entry, setEntry] = useState(null)
+  const [habits, setHabits] = useState({}) // Store habits by habit_key
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   
@@ -13,20 +14,21 @@ const SCTTracker = () => {
   const today = formatDate(currentDate)
   
   const habitLabels = {
-    morningLight: { label: 'Luz solar matutina', icon: '☀️', category: 'morning' },
-    coldWater: { label: 'Agua fría en cara', icon: '💧', category: 'morning' },
-    exerciseBrief: { label: 'Ejercicio breve AM', icon: '🏃', category: 'morning' },
-    proteinBreakfast: { label: 'Desayuno proteico', icon: '🥚', category: 'morning' },
-    pomodoros: { label: 'Pomodoros completados', icon: '🍅', category: 'day', type: 'number' },
-    lexicalExercise: { label: 'Ejercicio léxico 10min', icon: '🔤', category: 'day' },
-    aerobicExercise: { label: 'Ejercicio aeróbico 30min', icon: '❤️', category: 'day' },
-    focusedMeditation: { label: 'Meditación focalizada', icon: '🎯', category: 'night' },
-    wordGames: { label: 'Juegos de palabras', icon: '🎮', category: 'day' },
-    sleepSchedule: { label: 'Horario sueño cumplido', icon: '🌙', category: 'night' }
+    morningLight: { label: 'Morning Sunlight', icon: '☀️', category: 'morning' },
+    coldWater: { label: 'Cold Water on Face', icon: '💧', category: 'morning' },
+    exerciseBrief: { label: 'Brief Morning Exercise', icon: '🏃', category: 'morning' },
+    proteinBreakfast: { label: 'Protein Breakfast', icon: '🥚', category: 'morning' },
+    pomodoros: { label: 'Pomodoros Completed', icon: '🍅', category: 'day', type: 'number' },
+    lexicalExercise: { label: 'Lexical Exercise 10min', icon: '🔤', category: 'day' },
+    aerobicExercise: { label: 'Aerobic Exercise 30min', icon: '❤️', category: 'day' },
+    focusedMeditation: { label: 'Focused Meditation', icon: '🎯', category: 'night' },
+    wordGames: { label: 'Word Games', icon: '🎮', category: 'day' },
+    sleepSchedule: { label: 'Sleep Schedule Met', icon: '🌙', category: 'night' }
   }
 
   useEffect(() => {
     loadEntry()
+    loadHabits()
   }, [today])
 
   const loadEntry = async () => {
@@ -58,6 +60,22 @@ const SCTTracker = () => {
       })
     } finally {
       setLoading(false)
+    }
+  }
+
+  const loadHabits = async () => {
+    try {
+      const response = await habitsAPI.getTodayHabits()
+      const habitsMap = {}
+      if (response.data) {
+        response.data.forEach(habit => {
+          habitsMap[habit.habit_key] = habit
+        })
+      }
+      setHabits(habitsMap)
+    } catch (error) {
+      console.error('Error loading habits:', error)
+      setHabits({})
     }
   }
 
@@ -104,17 +122,43 @@ const SCTTracker = () => {
   const updateHabit = async (habitKey, value) => {
     const date = today
     const completed = typeof value === 'boolean' ? value : value > 0
+    const numValue = typeof value === 'number' ? value : (completed ? 1 : 0)
     
     try {
-      await habitsAPI.completeHabit(habitKey, {
+      const response = await habitsAPI.completeHabit(habitKey, {
         date,
         habit_key: habitKey,
         completed,
-        value: typeof value === 'number' ? value : (completed ? 1 : 0)
+        value: numValue
       })
+      // Update local state with the response
+      if (response.data) {
+        setHabits(prev => ({
+          ...prev,
+          [habitKey]: response.data
+        }))
+      }
     } catch (error) {
       console.error('Error updating habit:', error)
     }
+  }
+
+  const getHabitValue = (habitKey) => {
+    const habit = habits[habitKey]
+    const isNumberType = habitLabels[habitKey]?.type === 'number'
+    
+    if (!habit) {
+      // Return 0 for number inputs, false for checkboxes
+      return isNumberType ? 0 : false
+    }
+    
+    if (isNumberType) {
+      // For number inputs, return the value (or 0 if undefined/null)
+      return habit.value ?? 0
+    }
+    
+    // For checkboxes, return the completed status
+    return habit.completed || false
   }
 
   const changeDate = (days) => {
@@ -159,10 +203,10 @@ const SCTTracker = () => {
       </div>
 
       <div className="tracker-section">
-        <h3>Métricas Diarias</h3>
+        <h3>Daily Metrics</h3>
         <div className="metrics-grid">
           <div className="metric-card">
-            <label>Energía Mental (1-10)</label>
+            <label>Mental Energy (1-10)</label>
             <input
               type="range"
               min="1"
@@ -175,7 +219,7 @@ const SCTTracker = () => {
           </div>
 
           <div className="metric-card">
-            <label>Episodios de Niebla</label>
+            <label>Fog Episodes</label>
             <input
               type="number"
               min="0"
@@ -186,7 +230,7 @@ const SCTTracker = () => {
           </div>
 
           <div className="metric-card">
-            <label>Horas de Sueño</label>
+            <label>Sleep Hours</label>
             <input
               type="number"
               min="0"
@@ -201,7 +245,7 @@ const SCTTracker = () => {
       </div>
 
       <div className="tracker-section">
-        <h3>Hábitos Matutinos</h3>
+        <h3>Morning Habits</h3>
         <div className="habits-grid">
           {habitsByCategory.morning.map(({ key, label, icon }) => (
             <div key={key} className="habit-item">
@@ -209,7 +253,7 @@ const SCTTracker = () => {
               <span className="habit-label">{label}</span>
               <input
                 type="checkbox"
-                checked={false} // Will be loaded from habits API
+                checked={getHabitValue(key)}
                 onChange={(e) => updateHabit(key, e.target.checked)}
                 className="habit-checkbox"
               />
@@ -219,7 +263,7 @@ const SCTTracker = () => {
       </div>
 
       <div className="tracker-section">
-        <h3>Hábitos del Día</h3>
+        <h3>Daytime Habits</h3>
         <div className="habits-grid">
           {habitsByCategory.day.map(({ key, label, icon, type }) => (
             <div key={key} className="habit-item">
@@ -229,14 +273,14 @@ const SCTTracker = () => {
                 <input
                   type="number"
                   min="0"
-                  value={0}
+                  value={getHabitValue(key)}
                   onChange={(e) => updateHabit(key, parseInt(e.target.value) || 0)}
                   className="habit-number"
                 />
               ) : (
                 <input
                   type="checkbox"
-                  checked={false}
+                  checked={getHabitValue(key)}
                   onChange={(e) => updateHabit(key, e.target.checked)}
                   className="habit-checkbox"
                 />
@@ -247,7 +291,7 @@ const SCTTracker = () => {
       </div>
 
       <div className="tracker-section">
-        <h3>Hábitos Nocturnos</h3>
+        <h3>Nighttime Habits</h3>
         <div className="habits-grid">
           {habitsByCategory.night.map(({ key, label, icon }) => (
             <div key={key} className="habit-item">
@@ -255,7 +299,7 @@ const SCTTracker = () => {
               <span className="habit-label">{label}</span>
               <input
                 type="checkbox"
-                checked={false}
+                checked={getHabitValue(key)}
                 onChange={(e) => updateHabit(key, e.target.checked)}
                 className="habit-checkbox"
               />
@@ -265,17 +309,17 @@ const SCTTracker = () => {
       </div>
 
       <div className="tracker-section">
-        <h3>Notas</h3>
+        <h3>Notes</h3>
         <textarea
           value={entry.notes ?? ''}
           onChange={(e) => updateField('notes', e.target.value)}
           className="notes-textarea"
-          placeholder="Añade notas sobre tu día..."
+          placeholder="Add notes about your day..."
           rows={4}
         />
       </div>
 
-      {saving && <div className="saving-indicator">Guardando...</div>}
+      {saving && <div className="saving-indicator">Saving...</div>}
     </div>
   )
 }

@@ -106,20 +106,20 @@ const MeditationFocus = () => {
 
   return (
     <div className="guide-component">
-      <h3>Meditación Focalizada</h3>
+      <h3>Focused Meditation</h3>
       
       <div className="meditation-mode-selector">
         <button
           onClick={() => setMode('point')}
           className={mode === 'point' ? 'active' : ''}
         >
-          Concentración en Punto
+          Point Concentration
         </button>
         <button
           onClick={() => setMode('breathing')}
           className={mode === 'breathing' ? 'active' : ''}
         >
-          Conteo de Respiraciones
+          Breath Counting
         </button>
       </div>
 
@@ -132,9 +132,9 @@ const MeditationFocus = () => {
             className="focus-canvas"
             onClick={handleReset}
           />
-          <p className="instruction">Haz clic cuando tu mente divague</p>
+          <p className="instruction">Click when your mind wanders</p>
           <div className="meditation-stats">
-            <span>Tiempo: <strong>{formatTime(timeElapsed)}</strong></span>
+            <span>Time: <strong>{formatTime(timeElapsed)}</strong></span>
             <span>Resets: <strong>{resets}</strong></span>
           </div>
         </div>
@@ -144,13 +144,13 @@ const MeditationFocus = () => {
             <span className="breath-count">{breathCount}</span>
           </div>
           <p className="breath-instruction">
-            {breathPhase === 'inhale' && 'Inhala...'}
-            {breathPhase === 'hold' && 'Mantén...'}
-            {breathPhase === 'exhale' && 'Exhala...'}
+            {breathPhase === 'inhale' && 'Inhale...'}
+            {breathPhase === 'hold' && 'Hold...'}
+            {breathPhase === 'exhale' && 'Exhale...'}
           </p>
           <div className="meditation-stats">
-            <span>Tiempo: <strong>{formatTime(timeElapsed)}</strong></span>
-            <span>Ciclos: <strong>{breathCount}</strong></span>
+            <span>Time: <strong>{formatTime(timeElapsed)}</strong></span>
+            <span>Cycles: <strong>{breathCount}</strong></span>
           </div>
         </div>
       )}
@@ -158,7 +158,7 @@ const MeditationFocus = () => {
       <div className="meditation-controls">
         {!isActive ? (
           <button onClick={startSession} className="start-btn">
-            Iniciar Meditación
+            Start Meditation
           </button>
         ) : (
           <button onClick={endSession} className="stop-btn">

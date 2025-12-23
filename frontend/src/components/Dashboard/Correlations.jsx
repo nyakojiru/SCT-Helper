@@ -4,7 +4,7 @@ import './Dashboard.css'
 const Correlations = ({ data }) => {
   return (
     <div className="correlations">
-      <h3>Correlaciones</h3>
+      <h3>Correlations</h3>
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={300}>
           <ScatterChart data={data.sleep_vs_energy}>
@@ -12,15 +12,15 @@ const Correlations = ({ data }) => {
             <XAxis
               type="number"
               dataKey="sleep"
-              name="Sueño"
-              label={{ value: 'Horas de Sueño', position: 'insideBottom', offset: -5, fill: '#818cf8' }}
+              name="Sleep"
+              label={{ value: 'Sleep Hours', position: 'insideBottom', offset: -5, fill: '#818cf8' }}
               stroke="#818cf8"
             />
             <YAxis
               type="number"
               dataKey="energy"
-              name="Energía"
-              label={{ value: 'Energía Mental', angle: -90, position: 'insideLeft', fill: '#818cf8' }}
+              name="Energy"
+              label={{ value: 'Mental Energy', angle: -90, position: 'insideLeft', fill: '#818cf8' }}
               stroke="#818cf8"
             />
             <Tooltip
@@ -31,7 +31,7 @@ const Correlations = ({ data }) => {
                 color: '#c084fc'
               }}
             />
-            <Scatter name="Sueño vs Energía" data={data.sleep_vs_energy} fill="#6366f1" />
+            <Scatter name="Sleep vs Energy" data={data.sleep_vs_energy} fill="#6366f1" />
           </ScatterChart>
         </ResponsiveContainer>
       </div>

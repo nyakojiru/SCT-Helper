@@ -82,25 +82,25 @@ const LexicalExercise = () => {
 
   return (
     <div className="guide-component">
-      <h3>Ejercicio de Recuperación Léxica</h3>
+      <h3>Lexical Retrieval Exercise</h3>
       <p className="guide-description">
-        Escribe palabras de la categoría: <strong>{currentCategory || 'Selecciona una categoría'}</strong>
+        Write words from the category: <strong>{currentCategory || 'Select a category'}</strong>
       </p>
       
       <div className="timer-display">
         <div className="timer-circle">
           <span className="timer-value">{timeLeft}</span>
-          <span className="timer-label">segundos</span>
+          <span className="timer-label">seconds</span>
         </div>
       </div>
 
       <div className="score-display">
-        <span>Palabras encontradas: <strong>{score}</strong></span>
+        <span>Words found: <strong>{score}</strong></span>
       </div>
 
       {!isActive ? (
         <button onClick={startSession} className="start-btn">
-          Iniciar Ejercicio
+          Start Exercise
         </button>
       ) : (
         <div className="exercise-active">

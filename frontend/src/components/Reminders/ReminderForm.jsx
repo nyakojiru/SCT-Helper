@@ -2,16 +2,16 @@ import { useState } from 'react'
 import './Reminders.css'
 
 const habitOptions = [
-  { key: 'morningLight', label: 'Luz solar matutina' },
-  { key: 'coldWater', label: 'Agua fría en cara' },
-  { key: 'exerciseBrief', label: 'Ejercicio breve AM' },
-  { key: 'proteinBreakfast', label: 'Desayuno proteico' },
-  { key: 'pomodoros', label: 'Inicio bloque Pomodoro' },
-  { key: 'lexicalExercise', label: 'Ejercicio léxico' },
-  { key: 'aerobicExercise', label: 'Ejercicio aeróbico' },
-  { key: 'focusedMeditation', label: 'Meditación focalizada' },
-  { key: 'wordGames', label: 'Juegos de palabras' },
-  { key: 'sleepSchedule', label: 'Rutina nocturna' },
+  { key: 'morningLight', label: 'Morning Sunlight' },
+  { key: 'coldWater', label: 'Cold Water on Face' },
+  { key: 'exerciseBrief', label: 'Brief Morning Exercise' },
+  { key: 'proteinBreakfast', label: 'Protein Breakfast' },
+  { key: 'pomodoros', label: 'Pomodoro Block Start' },
+  { key: 'lexicalExercise', label: 'Lexical Exercise' },
+  { key: 'aerobicExercise', label: 'Aerobic Exercise' },
+  { key: 'focusedMeditation', label: 'Focused Meditation' },
+  { key: 'wordGames', label: 'Word Games' },
+  { key: 'sleepSchedule', label: 'Nighttime Routine' },
 ]
 
 const ReminderForm = ({ onSubmit, onCancel, initialData = null }) => {
@@ -20,7 +20,7 @@ const ReminderForm = ({ onSubmit, onCancel, initialData = null }) => {
   const [enabled, setEnabled] = useState(initialData?.enabled !== false)
   const [daysOfWeek, setDaysOfWeek] = useState(initialData?.days_of_week || [0, 1, 2, 3, 4, 5, 6])
 
-  const dayLabels = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
+  const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
   const toggleDay = (day) => {
     if (daysOfWeek.includes(day)) {
@@ -43,14 +43,14 @@ const ReminderForm = ({ onSubmit, onCancel, initialData = null }) => {
   return (
     <form className="reminder-form" onSubmit={handleSubmit}>
       <div className="form-group">
-        <label>Hábito</label>
+        <label>Habit</label>
         <select
           value={habitKey}
           onChange={(e) => setHabitKey(e.target.value)}
           required
           className="form-input"
         >
-          <option value="">Selecciona un hábito</option>
+          <option value="">Select a habit</option>
           {habitOptions.map(option => (
             <option key={option.key} value={option.key}>
               {option.label}
@@ -60,7 +60,7 @@ const ReminderForm = ({ onSubmit, onCancel, initialData = null }) => {
       </div>
 
       <div className="form-group">
-        <label>Hora</label>
+        <label>Time</label>
         <input
           type="time"
           value={time}
@@ -71,7 +71,7 @@ const ReminderForm = ({ onSubmit, onCancel, initialData = null }) => {
       </div>
 
       <div className="form-group">
-        <label>Días de la Semana</label>
+        <label>Days of the Week</label>
         <div className="days-selector">
           {dayLabels.map((label, index) => (
             <button
@@ -93,16 +93,16 @@ const ReminderForm = ({ onSubmit, onCancel, initialData = null }) => {
             checked={enabled}
             onChange={(e) => setEnabled(e.target.checked)}
           />
-          Habilitado
+          Enabled
         </label>
       </div>
 
       <div className="form-actions">
         <button type="submit" className="submit-btn">
-          {initialData ? 'Actualizar' : 'Crear'}
+          {initialData ? 'Update' : 'Create'}
         </button>
         <button type="button" onClick={onCancel} className="cancel-btn">
-          Cancelar
+          Cancel
         </button>
       </div>
     </form>

@@ -10,18 +10,18 @@ const Guides = () => {
   const [activeGuide, setActiveGuide] = useState(null)
 
   const guides = [
-    { id: 'lexical', name: 'Ejercicio Léxico', component: LexicalExercise, icon: '🔤' },
+    { id: 'lexical', name: 'Lexical Exercise', component: LexicalExercise, icon: '🔤' },
     { id: 'pomodoro', name: 'Pomodoro Timer', component: PomodoroTimer, icon: '🍅' },
-    { id: 'meditation', name: 'Meditación Focalizada', component: MeditationFocus, icon: '🎯' },
-    { id: 'wordgames', name: 'Juegos de Palabras', component: WordGames, icon: '🎮' },
-    { id: 'morning', name: 'Rutina Matutina', component: MorningRoutine, icon: '☀️' },
+    { id: 'meditation', name: 'Focused Meditation', component: MeditationFocus, icon: '🎯' },
+    { id: 'wordgames', name: 'Word Games', component: WordGames, icon: '🎮' },
+    { id: 'morning', name: 'Morning Routine', component: MorningRoutine, icon: '☀️' },
   ]
 
   const ActiveComponent = guides.find(g => g.id === activeGuide)?.component
 
   return (
     <div className="guides-container">
-      <h2>Guías Interactivas</h2>
+      <h2>Interactive Guides</h2>
       {!activeGuide ? (
         <div className="guides-grid">
           {guides.map((guide) => (
@@ -38,7 +38,7 @@ const Guides = () => {
       ) : (
         <div className="guide-active">
           <button onClick={() => setActiveGuide(null)} className="back-btn">
-            ← Volver
+            ← Back
           </button>
           {ActiveComponent && <ActiveComponent />}
         </div>

@@ -42,10 +42,12 @@ async def complete_habit(
         db.refresh(existing)
         return existing
     
+    # Exclude habit_key from dict since we're using the path parameter
+    habit_dict = habit_data.dict(exclude={'habit_key'})
     new_habit_log = HabitLog(
         user_id=current_user.id,
         habit_key=habit_key,
-        **habit_data.dict()
+        **habit_dict
     )
     db.add(new_habit_log)
     db.commit()

@@ -6,10 +6,10 @@ const MorningRoutine = () => {
   const [completedSteps, setCompletedSteps] = useState([])
 
   const steps = [
-    { id: 'light', name: 'Exposición a luz solar', duration: 10, icon: '☀️' },
-    { id: 'water', name: 'Agua fría en cara', duration: 2, icon: '💧' },
-    { id: 'exercise', name: 'Ejercicio breve', duration: 5, icon: '🏃' },
-    { id: 'breakfast', name: 'Desayuno proteico', duration: 15, icon: '🥚' },
+    { id: 'light', name: 'Sunlight Exposure', duration: 10, icon: '☀️' },
+    { id: 'water', name: 'Cold Water on Face', duration: 2, icon: '💧' },
+    { id: 'exercise', name: 'Brief Exercise', duration: 5, icon: '🏃' },
+    { id: 'breakfast', name: 'Protein Breakfast', duration: 15, icon: '🥚' },
   ]
 
   const toggleStep = (stepId) => {
@@ -22,9 +22,9 @@ const MorningRoutine = () => {
 
   return (
     <div className="guide-component">
-      <h3>Rutina Matutina Guiada</h3>
+      <h3>Guided Morning Routine</h3>
       <p className="guide-description">
-        Sigue estos pasos para activar tu sistema cognitivo
+        Follow these steps to activate your cognitive system
       </p>
 
       <div className="routine-steps">
@@ -37,7 +37,7 @@ const MorningRoutine = () => {
               <span className="step-icon">{step.icon}</span>
               <div className="step-info">
                 <h4>{step.name}</h4>
-                <span className="step-duration">{step.duration} minutos</span>
+                <span className="step-duration">{step.duration} minutes</span>
               </div>
               <input
                 type="checkbox"
@@ -52,7 +52,7 @@ const MorningRoutine = () => {
 
       <div className="routine-progress">
         <p>
-          Progreso: {completedSteps.length} / {steps.length} completados
+          Progress: {completedSteps.length} / {steps.length} completed
         </p>
         <div className="progress-bar">
           <div

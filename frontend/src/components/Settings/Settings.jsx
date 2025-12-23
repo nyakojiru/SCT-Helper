@@ -45,7 +45,7 @@ const Settings = () => {
       }
     } catch (error) {
       console.error('Error exporting data:', error)
-      alert('Error al exportar datos')
+      alert('Error exporting data')
     } finally {
       setExporting(false)
     }
@@ -53,12 +53,12 @@ const Settings = () => {
 
   return (
     <div className="settings-container fade-in">
-      <h2>Configuración</h2>
+      <h2>Settings</h2>
       
       <div className="settings-section">
-        <h3>Exportar Datos</h3>
+        <h3>Export Data</h3>
         <p className="settings-description">
-          Descarga tus datos en formato JSON o CSV. Tus datos te pertenecen.
+          Download your data in JSON or CSV format. Your data belongs to you.
         </p>
         <div className="export-buttons">
           <button
@@ -66,14 +66,14 @@ const Settings = () => {
             disabled={exporting}
             className="export-btn"
           >
-            {exporting ? 'Exportando...' : 'Exportar JSON'}
+            {exporting ? 'Exporting...' : 'Export JSON'}
           </button>
           <button
             onClick={() => exportData('csv')}
             disabled={exporting}
             className="export-btn"
           >
-            {exporting ? 'Exportando...' : 'Exportar CSV'}
+            {exporting ? 'Exporting...' : 'Export CSV'}
           </button>
         </div>
       </div>

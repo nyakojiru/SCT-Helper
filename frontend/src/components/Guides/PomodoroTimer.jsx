@@ -89,7 +89,7 @@ const PomodoroTimer = () => {
     <div className="guide-component">
       <h3>Pomodoro Timer</h3>
       <p className="guide-description">
-        {isBreak ? 'Tiempo de descanso' : 'Tiempo de trabajo'}
+        {isBreak ? 'Break Time' : 'Work Time'}
       </p>
 
       <div className="pomodoro-display">
@@ -99,21 +99,21 @@ const PomodoroTimer = () => {
       </div>
 
       <div className="pomodoro-stats">
-        <span>Pomodoros completados: <strong>{completedPomodoros}</strong></span>
+        <span>Pomodoros completed: <strong>{completedPomodoros}</strong></span>
       </div>
 
       <div className="pomodoro-controls">
         {!isActive ? (
           <button onClick={startTimer} className="start-btn">
-            Iniciar
+            Start
           </button>
         ) : (
           <button onClick={pauseTimer} className="pause-btn">
-            Pausar
+            Pause
           </button>
         )}
         <button onClick={resetTimer} className="reset-btn">
-          Reiniciar
+          Reset
         </button>
       </div>
     </div>

@@ -51,9 +51,9 @@ const Reminders = () => {
   return (
     <div className="reminders-container fade-in">
       <div className="reminders-header">
-        <h2>Recordatorios</h2>
+        <h2>Reminders</h2>
         <button onClick={() => setShowForm(!showForm)} className="add-reminder-btn">
-          {showForm ? 'Cancelar' : '+ Nuevo Recordatorio'}
+          {showForm ? 'Cancel' : '+ New Reminder'}
         </button>
       </div>
 

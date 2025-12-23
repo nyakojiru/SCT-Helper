@@ -26,12 +26,12 @@ const ReminderList = ({ reminders, onUpdate }) => {
     return time
   }
 
-  const dayLabels = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
+  const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
   return (
     <div className="reminder-list">
       {reminders.length === 0 ? (
-        <p className="no-reminders">No hay recordatorios configurados</p>
+        <p className="no-reminders">No reminders configured</p>
       ) : (
         reminders.map(reminder => (
           <div key={reminder.id} className="reminder-item">
@@ -67,7 +67,7 @@ const ReminderList = ({ reminders, onUpdate }) => {
                     <span className="toggle-slider"></span>
                   </label>
                   <button onClick={() => handleEdit(reminder)} className="edit-btn">
-                    Editar
+                    Edit
                   </button>
                 </div>
               </>

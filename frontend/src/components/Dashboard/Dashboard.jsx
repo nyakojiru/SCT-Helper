@@ -48,9 +48,9 @@ const Dashboard = () => {
           onChange={(e) => setPeriod(e.target.value)}
           className="period-select"
         >
-          <option value="7">Últimos 7 días</option>
-          <option value="30">Últimos 30 días</option>
-          <option value="90">Últimos 90 días</option>
+          <option value="7">Last 7 days</option>
+          <option value="30">Last 30 days</option>
+          <option value="90">Last 90 days</option>
         </select>
       </div>
 
