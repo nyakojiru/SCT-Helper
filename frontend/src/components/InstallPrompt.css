@@ -1,0 +1,100 @@
+.install-prompt {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+  max-width: 400px;
+  width: 90%;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+.install-prompt-content {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid var(--accent-primary);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(127, 179, 168, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.install-prompt-icon {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.install-prompt-text {
+  text-align: center;
+}
+
+.install-prompt-text h3 {
+  color: var(--accent-primary);
+  font-family: 'Courier New', monospace;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.install-prompt-text p {
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.install-prompt-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.install-btn,
+.dismiss-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.install-btn {
+  background: linear-gradient(135deg, #7FB3A8 0%, #A5C9C7 100%);
+  color: #FFFFFF;
+}
+
+.install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(127, 179, 168, 0.4);
+}
+
+.dismiss-btn {
+  background: rgba(127, 179, 168, 0.2);
+  color: var(--accent-primary);
+  border: 1px solid var(--border-color);
+}
+
+.dismiss-btn:hover {
+  background: rgba(127, 179, 168, 0.3);
+}
+
+@media (max-width: 768px) {
+  .install-prompt {
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+

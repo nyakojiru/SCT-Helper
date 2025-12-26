@@ -4,8 +4,8 @@
   "description": "Track and manage Cognitive Disengagement Syndrome symptoms",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#6366f1",
+  "background_color": "#F5F7FA",
+  "theme_color": "#7FB3A8",
   "orientation": "portrait-primary",
   "icons": [
     {

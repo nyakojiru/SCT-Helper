@@ -5,14 +5,14 @@
 }
 
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #1a1a2e;
-  --accent-primary: #6366f1;
-  --accent-secondary: #818cf8;
-  --accent-tertiary: #c084fc;
-  --text-primary: #c084fc;
-  --text-secondary: #818cf8;
-  --border-color: #6366f1;
+  --bg-primary: #F5F7FA;
+  --bg-secondary: #E8EDF2;
+  --accent-primary: #7FB3A8;
+  --accent-secondary: #B8A9C9;
+  --accent-tertiary: #A5C9C7;
+  --text-primary: #4A5568;
+  --text-secondary: #718096;
+  --border-color: #CBD5E0;
 }
 
 body {

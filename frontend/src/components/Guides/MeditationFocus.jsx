@@ -48,7 +48,7 @@ const MeditationFocus = () => {
       
       const draw = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        ctx.fillStyle = '#6366f1'
+        ctx.fillStyle = '#7FB3A8'
         ctx.beginPath()
         ctx.arc(centerX, centerY, 10, 0, 2 * Math.PI)
         ctx.fill()

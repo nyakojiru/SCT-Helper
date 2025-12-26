@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider } from './hooks/useAuth'
 import PrivateRoute from './components/PrivateRoute'
+import InstallPrompt from './components/InstallPrompt'
 import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
 import Tracker from './components/Tracker/SCTTracker'
@@ -36,6 +37,7 @@ function App() {
             }
           />
         </Routes>
+        <InstallPrompt />
       </Router>
     </AuthProvider>
   )

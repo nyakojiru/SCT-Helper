@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7FB3A8">
+  <title>SCT Helper - Offline</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Courier New', monospace;
+      background: linear-gradient(135deg, #F5F7FA 0%, #E8EDF2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4A5568;
+    }
+    .offline-container {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      border: 1px solid #CBD5E0;
+      max-width: 400px;
+    }
+    h1 {
+      color: #7FB3A8;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: #718096;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #7FB3A8 0%, #A5C9C7 100%);
+      border: none;
+      border-radius: 4px;
+      color: #FFFFFF;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(127, 179, 168, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="icon">📡</div>
+    <h1>You're Offline</h1>
+    <p>It looks like you're not connected to the internet. Some features may be limited.</p>
+    <p>Don't worry - you can still view your cached data!</p>
+    <button onclick="window.location.reload()">Try Again</button>
+  </div>
+</body>
+</html>
+

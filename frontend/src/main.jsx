@@ -3,18 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './styles/index.css'
 
-// Register service worker for PWA
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('Service Worker registered:', registration)
-      })
-      .catch((error) => {
-        console.log('Service Worker registration failed:', error)
-      })
-  })
-}
+// Service worker registration is handled automatically by vite-plugin-pwa
+// via the injectRegister: 'auto' option in vite.config.js
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

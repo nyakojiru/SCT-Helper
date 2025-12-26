@@ -47,35 +47,35 @@ const TrendCharts = ({ period }) => {
       <div className="chart-container">
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#6366f1" opacity={0.3} />
-            <XAxis dataKey="date" stroke="#818cf8" />
-            <YAxis stroke="#818cf8" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#7FB3A8" opacity={0.3} />
+            <XAxis dataKey="date" stroke="#718096" />
+            <YAxis stroke="#718096" />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#1a1a2e',
-                border: '1px solid #6366f1',
-                color: '#c084fc'
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #CBD5E0',
+                color: '#4A5568'
               }}
             />
             <Legend />
             <Line
               type="monotone"
               dataKey="mentalEnergy"
-              stroke="#6366f1"
+              stroke="#7FB3A8"
               strokeWidth={2}
               name="Mental Energy"
             />
             <Line
               type="monotone"
               dataKey="fogEpisodes"
-              stroke="#f59e0b"
+              stroke="#F4A460"
               strokeWidth={2}
               name="Fog Episodes"
             />
             <Line
               type="monotone"
               dataKey="sleepHours"
-              stroke="#10b981"
+              stroke="#A5C9C7"
               strokeWidth={2}
               name="Sleep Hours"
             />
